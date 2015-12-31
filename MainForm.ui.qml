@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.2
 Item {
 	id: item1
 	width: 800
+	property alias button1: button1
+	property alias label5: label5
 	property alias textField1: textField1
 	property alias sliderHorizontal1: sliderHorizontal1
 	antialiasing: false
@@ -121,6 +123,33 @@ Item {
 				anchors.topMargin: 0
 				anchors.left: parent.left
 				anchors.leftMargin: 0
+			}
+
+			Row {
+				id: row3
+				height: 46
+				anchors.right: parent.right
+				anchors.rightMargin: 0
+				anchors.left: parent.left
+				anchors.leftMargin: 0
+				anchors.top: row2.bottom
+				anchors.topMargin: 0
+
+	Button {
+		id: button1
+		text: qsTr("Get Num Serial Ports")
+		anchors.left: parent.left
+  anchors.leftMargin: 0
+		anchors.verticalCenter: parent.verticalCenter
+	}
+
+	Label {
+		id: label5
+		text: qsTr("Label")
+		anchors.left: button1.right
+		anchors.leftMargin: 10
+		anchors.verticalCenter: parent.verticalCenter
+ }
 			}
 		}
 	}

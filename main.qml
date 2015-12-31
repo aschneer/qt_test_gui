@@ -2,6 +2,7 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.2
 import QtQuick.Dialogs 1.2
+import Serial 1.0
 
 ApplicationWindow {
     visible: true
@@ -40,9 +41,14 @@ ApplicationWindow {
     MainForm {
         anchors.fill: parent
 
+		QMLSerialPortInfo {
+			id: my_QMLSerialPortInfo
+		}
+
 		// Define signals (events) and which slots (handlers) they call.
 		sliderHorizontal1.onValueChanged: textField1_update()
 		textField1.onDisplayTextChanged: sliderHorizontal1_update()
+		button1.onClicked: label5_update()
 
 		// Define slot (handler) functions.
 
@@ -68,9 +74,13 @@ ApplicationWindow {
 			}
 		}
 
+		function label5_update() {
+			label5.text = my_QMLSerialPortInfo.numPortsAvailable();
+		}
+
     }
 
-	statusBar: StatusBar {
+	statusBar:StatusBar {
 		RowLayout {
 			anchors.fill: parent
 			Label { text: "Status bar content..." }

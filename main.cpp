@@ -1,8 +1,14 @@
+#include <iostream>
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QDebug>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QtQml>
+#include "qmlserialportinfo.h"
+#include "qmlserialportinfo.cpp"
+
+//using namespace std;
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +17,9 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
+	qmlRegisterType<QMLSerialPortInfo>("Serial", 1, 0, "QMLSerialPortInfo");
+
+/*
 	// Example use QSerialPortInfo
 	foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
 		qDebug() << "Name : " << info.portName();
@@ -23,6 +32,7 @@ int main(int argc, char *argv[])
 		if (serial.open(QIODevice::ReadWrite))
 			serial.close();
 	}
+*/
 
     return app.exec();
 }
